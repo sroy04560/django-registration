@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a href="{% url 'basic:index'%}" class="navbar-brand">Index</a>
+
+      <button type="button" class="navbar-toggler"
+      data-toggle='#navb' aria-controls="navbarNavDropdown" aria-expanded="false"
+       aria-label="Toggle navigation" name="button">
+     </button>
+
+      <div class="collapse navbar-collapse" id='navb'>
+        <ul class="navbar-nav">
+          
+          <li class="nav-item active">
+            <a href="{% url 'admin:index'%}" class="nav-link">Admin</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'basic:register'%}" class="nav-link">Register</a>
+          </li>
+          
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+            <a href="{% url 'basic:lout'%}" class="nav-link">Logout</a>
+          </li>
+          {% else %}
+              <li class="nav-item">
+            <a href="{% url 'basic:log'%}" class="nav-link">login</a>
+          </li>
+  
+            {% endif %}
+
+        </ul>
+      </div>
+    </nav>
+
+
+
+	<div class="container">
+			{%block body_block %}
+			{%endblock%}
+
+	</div>
+</body>
+</html>
